@@ -1,8 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import HeroPractice from "@/components/hero/HeroPractice";
 import FeatureOverview from "@/components/home/FeatureOverview";
 import CoreFeatures from "@/components/home/CoreFeatures";
+import CTASection from "@/components/home/CTASection";
+import Footer from "@/components/home/Footer";
 
 
 export default function Home() {
@@ -13,7 +14,9 @@ export default function Home() {
           <Hero />
           <FeatureOverview></FeatureOverview>
          <CoreFeatures></CoreFeatures>
+         <CTASection></CTASection>
       </main>
+      <Footer></Footer>
     
     </>
   );
