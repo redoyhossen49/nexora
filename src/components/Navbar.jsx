@@ -34,7 +34,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-8 sm:flex"
         >
           {navLinks.map((link) => (
             <Link
