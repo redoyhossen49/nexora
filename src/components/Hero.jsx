@@ -9,10 +9,10 @@ export default function Hero() {
 
           {/* Badge */}
           <div className="mb-6 inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-semibold tracking-wide text-indigo-700 sm:text-sm">
-            <span aria-hidden="true" className="mr-1.5">
-              ✦
-            </span>
-            BUILT FOR HIGH-PERFORMING TEAMS
+           
+              
+            
+           ✦ BUILT FOR HIGH-PERFORMING TEAMS
           </div>
 
           {/* Heading */}
