@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Features", href: "/features" },
@@ -13,6 +14,9 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const pathname=usePathname();
+
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -36,15 +40,27 @@ export default function Navbar() {
           aria-label="Main navigation"
           className="hidden items-center gap-8 sm:flex"
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+  const isActive = pathname === link.href;
+
+  return (
+    <Link
+      key={link.href}
+      href={link.href}
+      className={`
+        text-sm font-medium transition-colors
+        ${
+          isActive
+            ? "text-indigo-600"
+            : "text-slate-600 hover:text-slate-900"
+        }
+      `}
+    >
+      {link.label}
+    </Link>
+  );
+})}
+          
         </nav>
 
         {/* Desktop Actions */}
@@ -100,16 +116,26 @@ export default function Navbar() {
             className="mx-auto max-w-7xl  "
           >
             
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMenu}
-                  className=" flex flex-col  mt-4 items-center justify-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+  const isActive = pathname === link.href;
+
+  return (
+    <Link
+      key={link.href}
+      href={link.href}
+      className={`
+        flex flex-col  mt-4 items-center justify-center text-sm font-medium  transition-colors hover:bg-slate-50  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500
+        ${
+          isActive
+            ? "text-indigo-600"
+            : "text-slate-600 hover:text-slate-900"
+        }
+      `}
+    >
+      {link.label}
+    </Link>
+  );
+})}
           
 
             {/* Mobile Actions */}
