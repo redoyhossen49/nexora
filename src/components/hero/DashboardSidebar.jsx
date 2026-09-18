@@ -1,110 +1,101 @@
-import Link from "next/link";
 import {
-  LayoutDashboard,
-  FolderKanban,
-  CheckSquare,
+  BarChart3,
   CalendarDays,
+  CheckSquare,
+  FolderKanban,
+  LayoutDashboard,
+  MessageCircle,
+  Settings,
   Users,
+  Files,
 } from "lucide-react";
 
-const sidebarLinks = [
+const mainNavigation = [
   {
     label: "Overview",
-    href: "/dashboard",
     icon: LayoutDashboard,
-    active: true,
   },
   {
     label: "Projects",
-    href: "/projects",
     icon: FolderKanban,
-    active: false,
   },
   {
     label: "Tasks",
-    href: "/tasks",
     icon: CheckSquare,
-    active: false,
   },
   {
     label: "Calendar",
-    href: "/calendar",
     icon: CalendarDays,
-    active: false,
   },
   {
     label: "Team",
-    href: "/team",
     icon: Users,
-    active: false,
+  },
+  {
+    label: "Messages",
+    icon: MessageCircle,
+  },
+  {
+    label: "Analytics",
+    icon: BarChart3,
+  },
+  {
+    label: "Files",
+    icon: Files,
   },
 ];
 
 export default function DashboardSidebar() {
   return (
-    <aside className="hidden w-52 shrink-0 border-r border-[var(--border)] bg-[var(--surface)] md:block">
-      <div className="p-4">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="block text-lg font-bold tracking-tight text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] focus-visible:ring-offset-2"
-        >
-          Nexora
-        </Link>
+    <aside className="hidden w-52 shrink-0 border-r border-[var(--border)] bg-[var(--surface)] lg:block">
+      <div className="flex h-full flex-col p-3">
+        {/* Workspace */}
+        <div className="mb-5 px-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+            Workspace
+          </p>
+        </div>
 
-        {/* Navigation */}
-        <nav
-          aria-label="Dashboard navigation"
-          className="mt-6 space-y-1"
-        >
-          {sidebarLinks.map((link) => {
-            const Icon = link.icon;
+        {/* Main navigation */}
+        <nav aria-label="Workspace navigation">
+          <ul className="space-y-1">
+            {mainNavigation.map((item, index) => {
+              const Icon = item.icon;
+              const isActive = index === 0;
 
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={link.active ? "page" : undefined}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] ${
-                  link.active
-                    ? "bg-[var(--surface-muted)] text-[var(--text-primary)]"
-                    : "text-[var(--text-secondary)] hover:bg-[var(--surface-muted)] hover:text-[var(--text-primary)]"
-                }`}
-              >
-                <Icon
-                  aria-hidden="true"
-                  className="h-4 w-4 shrink-0"
-                />
+              return (
+                <li key={item.label}>
+                  <div
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-medium transition-colors ${
+                      isActive
+                        ? "bg-[var(--surface-muted)] text-[var(--primary)]"
+                        : "text-[var(--text-secondary)]"
+                    }`}
+                  >
+                    <Icon
+                      className="h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
 
-                <span>{link.label}</span>
-              </Link>
-            );
-          })}
+                    <span>{item.label}</span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </nav>
-        <div className="mt-8 border-t border-[var(--border)] pt-4">
-  <p className="px-3 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">
-    Workspace
-  </p>
 
-  <div className="mt-3 flex items-center gap-3 px-3">
-    <div
-      aria-hidden="true"
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[11px] font-semibold text-white"
-    >
-      RH
-    </div>
+        {/* Bottom */}
+        <div className="mt-auto border-t border-[var(--border)] pt-3">
+          <div className="flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-medium text-[var(--text-secondary)]">
+            <Settings
+              className="h-4 w-4 shrink-0"
+              aria-hidden="true"
+            />
 
-    <div className="min-w-0">
-      <p className="truncate text-xs font-semibold text-[var(--text-primary)]">
-        Redoy Hossen
-      </p>
-
-      <p className="truncate text-[11px] text-[var(--text-muted)]">
-        Personal workspace
-      </p>
-    </div>
-  </div>
-</div>
+            <span>Settings</span>
+          </div>
+        </div>
       </div>
     </aside>
   );

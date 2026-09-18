@@ -61,3 +61,61 @@ button {
   cursor: pointer;
 }
 
+/* --------------------------------
+   Motion
+-------------------------------- */
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: var(--motion-delay, 0ms);
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* --------------------------------
+   Motion Reveal Scale
+-------------------------------- */
+
+.motion-reveal-scale {
+  opacity: 0;
+  transform: translateY(12px) scale(0.985);
+
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: var(--motion-delay, 0ms);
+}
+
+.motion-reveal-scale.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+/* --------------------------------
+   Reduced Motion
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-reveal,
+  .motion-reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
