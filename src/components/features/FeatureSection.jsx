@@ -8,19 +8,28 @@ export default function FeatureSection({
   team,
   progress,
   status,
-  reverse = false,
   visual,
+  reverse,
+  index,
 }) {
+  const isMuted = index % 2 !== 0;
+
   return (
-    <section className="bg-[var(--background)]">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 ">
+    <section
+      className={
+        isMuted
+          ? "bg-[var(--surface-muted)]"
+          : "bg-[var(--background)]"
+      }
+    >
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:py-28">
         <div
           className={`flex flex-col gap-10 lg:items-center lg:gap-16 ${
             reverse ? "lg:flex-row-reverse" : "lg:flex-row"
           }`}
         >
-          {/* Text */}
-          <div className="flex-1">
+          {/* Content */}
+          <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold text-[var(--primary)]">
               {eyebrow}
             </p>
@@ -34,8 +43,8 @@ export default function FeatureSection({
             </p>
           </div>
 
-          {/* Visual */}
-          <div className="flex-1">
+          {/* Product visual */}
+          <div className="min-w-0 flex-1">
             <FeatureVisual
               type={visual}
               project={project}
