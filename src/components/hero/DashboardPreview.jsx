@@ -7,8 +7,10 @@ import {
 import DashboardHeader from "./DashboardHeader";
 import DashboardSidebar from "./DashboardSidebar";
 import MetricCard from "./MetricCard";
-import ProjectProgress from "./ProjectProgress";
-import ActivityList from "./ActivityList";
+
+
+import ProjectProgress from "../shared/ProjectProgress";
+import ActivityList from "../shared/ActivityList";
 
 export default function DashboardPreview() {
   return (
