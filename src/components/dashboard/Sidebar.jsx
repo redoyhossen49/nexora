@@ -52,7 +52,7 @@ export default function Sidebar({ isOpen, onClose }) {
     <>
       {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black/40 transition-opacity md:hidden ${
+        className={`fixed inset-0 z-50 bg-black/40 transition-opacity md:hidden ${
           isOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
@@ -63,7 +63,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-[var(--border)] bg-[var(--surface)] transition-transform duration-300 md:z-30 md:translate-x-0 md:transition-none ${
+        className={`fixed inset-y-0 left-0 z-[60] w-64 border-r border-[var(--border)] bg-[var(--surface)] transition-transform duration-300 md:z-30 md:translate-x-0 md:transition-none ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

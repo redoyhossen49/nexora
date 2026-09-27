@@ -98,7 +98,7 @@ export default function ProjectsPage() {
 
             {/* Status */}
 
-            <div className="relative z-50">
+            <div className="relative ">
               <label
                 htmlFor="project-status"
                 className="block text-sm font-medium text-[var(--text-primary)]"
@@ -125,7 +125,7 @@ export default function ProjectsPage() {
               </button>
 
               {isStatusOpen && (
-                <div className="absolute left-0 top-full z-[9999] mt-2 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background)] p-1 shadow-xl">
+                <div className="absolute left-0 top-full z-10 mt-2 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background)] p-1 shadow-xl">
                   {statusOptions.map((option) => {
                     const isSelected =
                       statusFilter === option.value;
